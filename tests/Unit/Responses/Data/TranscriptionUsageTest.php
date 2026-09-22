@@ -12,6 +12,7 @@ test('transcription usage to array extends the base usage array with the audio d
         'cache_read_input_tokens' => null,
         'cache_write_input_tokens' => null,
         'reasoning_tokens' => null,
+        'cost' => null,
         'audio_seconds' => 203.5,
     ]);
 });
@@ -25,6 +26,7 @@ test('transcription usage can be created from a text usage', function (): void {
         'cache_read_input_tokens' => 4,
         'cache_write_input_tokens' => 2,
         'reasoning_tokens' => 6,
+        'cost' => null,
         'audio_seconds' => 203.5,
     ]);
 });

@@ -280,6 +280,49 @@ test('response usage includes cache and reasoning tokens', function (): void {
         ->and($response->usage->reasoningTokens)->toBe(10);
 });
 
+test('response usage includes the cost reported by openrouter', function (): void {
+    Http::fake(['*' => Http::response([
+        'id' => 'chatcmpl-123',
+        'object' => 'chat.completion',
+        'model' => 'anthropic/claude-sonnet-4.6',
+        'choices' => [[
+            'index' => 0,
+            'message' => ['role' => 'assistant', 'content' => 'Hello'],
+            'finish_reason' => 'stop',
+        ]],
+        'usage' => [
+            'prompt_tokens' => 10,
+            'completion_tokens' => 5,
+            'cost' => 0.000125,
+        ],
+    ])]);
+
+    $response = agent()->prompt('Hello', provider: 'openrouter');
+
+    expect($response->usage->cost)->toBe(0.000125);
+});
+
+test('response usage cost is null when openrouter does not report it', function (): void {
+    Http::fake(['*' => Http::response([
+        'id' => 'chatcmpl-123',
+        'object' => 'chat.completion',
+        'model' => 'anthropic/claude-sonnet-4.6',
+        'choices' => [[
+            'index' => 0,
+            'message' => ['role' => 'assistant', 'content' => 'Hello'],
+            'finish_reason' => 'stop',
+        ]],
+        'usage' => [
+            'prompt_tokens' => 10,
+            'completion_tokens' => 5,
+        ],
+    ])]);
+
+    $response = agent()->prompt('Hello', provider: 'openrouter');
+
+    expect($response->usage->cost)->toBeNull();
+});
+
 test('structured response is correctly parsed', function (): void {
     Http::fake(['*' => fakeOpenRouterResponse('{"symbol": "Au"}')]);
 

@@ -11,6 +11,7 @@ test('image usage to array appends the image token counts to the text usage coun
         'cache_read_input_tokens' => 10,
         'cache_write_input_tokens' => null,
         'reasoning_tokens' => 5,
+        'cost' => null,
         'image_input_tokens' => 8,
         'image_output_tokens' => 40,
     ]);
