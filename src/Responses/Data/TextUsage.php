@@ -59,24 +59,22 @@ readonly class TextUsage extends Usage
             static::sum($this->cacheReadInputTokens, $usage->cacheReadInputTokens),
             static::sum($this->cacheWriteInputTokens, $usage->cacheWriteInputTokens),
             static::sum($this->reasoningTokens, $usage->reasoningTokens),
-            static::sumCost($this->cost, $usage->cost),
+            static::sum($this->cost, $usage->cost),
         );
     }
 
     /**
      * Sum two optional counts, preserving null when neither was reported.
+     *
+     * @template T of int|float
+     *
+     * @param  T|null  $a
+     * @param  T|null  $b
+     * @return T|null
      */
-    protected static function sum(?int $a, ?int $b): ?int
+    protected static function sum(int|float|null $a, int|float|null $b): int|float|null
     {
         return $a === null && $b === null ? null : ($a ?? 0) + ($b ?? 0);
-    }
-
-    /**
-     * Sum two optional costs, preserving null when neither was reported.
-     */
-    protected static function sumCost(?float $a, ?float $b): ?float
-    {
-        return $a === null && $b === null ? null : ($a ?? 0.0) + ($b ?? 0.0);
     }
 
     /**
