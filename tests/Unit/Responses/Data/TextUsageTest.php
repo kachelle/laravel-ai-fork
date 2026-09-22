@@ -35,8 +35,7 @@ test('usage add keeps a detail null only when neither side reported it', functio
 
     expect($combined->cacheReadInputTokens)->toBe(7)
         ->and($combined->reasoningTokens)->toBe(3)
-        ->and($combined->cacheWriteInputTokens)->toBeNull()
-        ->and($combined->cost)->toBeNull();
+        ->and($combined->cacheWriteInputTokens)->toBeNull();
 });
 
 test('usage add keeps the cost null only when neither side reported it', function (): void {

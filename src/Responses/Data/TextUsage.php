@@ -10,7 +10,7 @@ readonly class TextUsage extends Usage
      * @param  int|null  $cacheReadInputTokens  Subset of the input tokens read from a prompt cache, or null when unreported.
      * @param  int|null  $cacheWriteInputTokens  Subset of the input tokens written to a prompt cache, or null when unreported.
      * @param  int|null  $reasoningTokens  Subset of the output tokens spent on reasoning, or null when unreported.
-     * @param  float|null  $cost  Cost of the request in USD as reported by the provider, or null when unreported.
+     * @param  float|null  $cost  Cost of the request as reported by the provider, or null when unreported.
      */
     public function __construct(
         int $inputTokens = 0,
