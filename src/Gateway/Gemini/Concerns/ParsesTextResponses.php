@@ -280,6 +280,7 @@ trait ParsesTextResponses
             $text->cacheReadInputTokens,
             $text->cacheWriteInputTokens,
             $text->reasoningTokens,
+            $text->cost,
             $this->modalityTokens($usage['input_tokens_by_modality'] ?? [], 'IMAGE'),
             $this->modalityTokens($usage['output_tokens_by_modality'] ?? [], 'IMAGE'),
         );

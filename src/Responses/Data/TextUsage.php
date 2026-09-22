@@ -36,7 +36,7 @@ readonly class TextUsage extends Usage
             cacheReadInputTokens: $data['cache_read_input_tokens'] ?? null,
             cacheWriteInputTokens: $data['cache_write_input_tokens'] ?? null,
             reasoningTokens: $data['reasoning_tokens'] ?? null,
-            cost: $data['cost'] ?? null,
+            cost: isset($data['cost']) ? (float) $data['cost'] : null,
         );
     }
 

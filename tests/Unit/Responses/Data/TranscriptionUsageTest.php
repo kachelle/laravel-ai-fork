@@ -30,3 +30,10 @@ test('transcription usage can be created from a text usage', function (): void {
         'audio_seconds' => 203.5,
     ]);
 });
+
+test('transcription usage from a text usage keeps the cost', function (): void {
+    $usage = TranscriptionUsage::from(new TextUsage(14, 8, cost: 0.0125), 203.5);
+
+    expect($usage->cost)->toBe(0.0125)
+        ->and($usage->audioSeconds)->toBe(203.5);
+});

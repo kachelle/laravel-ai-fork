@@ -3,7 +3,7 @@
 use Laravel\Ai\Responses\Data\ImageUsage;
 
 test('image usage to array appends the image token counts to the text usage counts', function (): void {
-    $usage = new ImageUsage(100, 50, 10, null, 5, 8, 40);
+    $usage = new ImageUsage(100, 50, 10, null, 5, null, 8, 40);
 
     expect($usage->toArray())->toBe([
         'input_tokens' => 100,
