@@ -36,6 +36,9 @@ class StructuredWithThinkingAgent implements Agent, HasProviderOptions, HasStruc
                     'type' => 'enabled',
                     'budget_tokens' => 10000,
                 ],
+                'output_config' => [
+                    'effort' => 'low',
+                ],
             ],
             default => [],
         };
