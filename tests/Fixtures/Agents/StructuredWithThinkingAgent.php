@@ -40,6 +40,14 @@ class StructuredWithThinkingAgent implements Agent, HasProviderOptions, HasStruc
                     'effort' => 'low',
                 ],
             ],
+            Lab::OpenAI => [
+                'reasoning' => [
+                    'effort' => 'low',
+                ],
+                'text' => [
+                    'verbosity' => 'low',
+                ],
+            ],
             default => [],
         };
     }
